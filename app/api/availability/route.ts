@@ -58,9 +58,17 @@ export async function GET(request: Request) {
                     break;
                 }
 
-                // Verificar si el slot es en el pasado
-                const now = new Date();
-                if (isBefore(slotStart, now)) {
+                // Verificar si el slot es en el pasado calculando 'now' con zona horaria de Bogotá (-05:00)
+                const utcNow = new Date();
+                const bogotaDateStr = new Intl.DateTimeFormat('en-US', {
+                    timeZone: 'America/Bogota', year: 'numeric', month: '2-digit', day: '2-digit',
+                    hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false
+                }).format(utcNow);
+                const [datePart, timePart] = bogotaDateStr.split(', ');
+                const [month, day, year] = datePart.split('/');
+                const nowBogota = new Date(`${year}-${month}-${day}T${timePart}-05:00`);
+
+                if (isBefore(slotStart, nowBogota)) {
                     currentMin += 30;
                     continue;
                 }
