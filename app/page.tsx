@@ -21,7 +21,7 @@ export default function Home() {
           priority
         />
         {/* Logo in background top-left - Official Brand Image */}
-        <div className="absolute top-12 left-12 w-48 h-48 md:w-72 md:h-72 opacity-40 pointer-events-none select-none mix-blend-multiply">
+        <div className="absolute top-4 left-1/2 -translate-x-1/2 md:top-12 md:left-12 md:translate-x-0 w-48 h-48 md:w-72 md:h-72 opacity-60 md:opacity-40 pointer-events-none select-none mix-blend-multiply">
           <Image
             src="/logo-official.jpg"
             alt="PRANA Brand Logo"
@@ -55,7 +55,7 @@ export default function Home() {
       </nav>
 
       {/* Hero Content */}
-      <div className="relative z-10 flex flex-col items-center justify-center text-center px-4 pt-20 pb-32 max-w-5xl mx-auto">
+      <div className="relative z-10 flex flex-col items-center justify-center text-center px-4 pt-36 md:pt-20 pb-32 max-w-5xl mx-auto mt-12 md:mt-0">
         <span className="inline-block py-1 px-3 mb-6 rounded-full bg-acid-green/10 text-prana-brown text-xs font-sans uppercase tracking-[0.2em] border border-acid-green/20 animate-fade-in">
           BIENVENIDA AL EQUILIBRIO PERFECTO
         </span>
