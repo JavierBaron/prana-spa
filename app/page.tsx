@@ -59,7 +59,7 @@ export default function Home() {
         <span className="inline-block py-1 px-3 mb-6 rounded-full bg-acid-green/10 text-prana-brown text-xs font-sans uppercase tracking-[0.2em] border border-acid-green/20 animate-fade-in">
           BIENVENIDA AL EQUILIBRIO PERFECTO
         </span>
-        <h1 className="text-5xl md:text-8xl font-serif text-prana-brown leading-tight mb-8">
+        <h1 className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-serif text-prana-brown leading-[1.1] mb-8">
           Tu esencia, <br />
           <span className="italic relative">
             potenciada por la ciencia y el arte
@@ -87,10 +87,10 @@ export default function Home() {
       </div>
 
       {/* Services Section */}
-      <section id="servicios" className="relative z-10 py-32 px-8 max-w-7xl mx-auto">
+      <section id="servicios" className="relative z-10 py-20 md:py-32 px-6 md:px-8 max-w-7xl mx-auto">
         <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-8">
           <div className="max-w-xl">
-            <h2 className="text-4xl md:text-5xl font-serif text-prana-brown mb-6">Nuestros Servicios</h2>
+            <h2 className="text-3xl md:text-5xl font-serif text-prana-brown mb-6">Nuestros Servicios</h2>
             <p className="text-prana-brown/60 font-sans text-lg italic">
               "En PRANA, no creemos en soluciones genéricas. Fusionamos aparatología de vanguardia con un enfoque holístico para crear protocolos que respetan la identidad de tu piel y cuerpo."
             </p>
@@ -135,10 +135,10 @@ export default function Home() {
       </section>
 
       {/* Why Choose Us Section */}
-      <section className="relative z-10 py-32 px-8 bg-white/30 backdrop-blur-sm">
+      <section className="relative z-10 py-20 md:py-32 px-6 md:px-8 bg-white/30 backdrop-blur-sm">
         <div className="max-w-7xl mx-auto px-4">
-          <div className="text-center mb-20">
-            <h2 className="text-4xl md:text-6xl font-serif text-prana-brown mb-6">El Compromiso PRANA</h2>
+          <div className="text-center mb-16 md:mb-20">
+            <h2 className="text-3xl md:text-6xl font-serif text-prana-brown mb-6">El Compromiso PRANA</h2>
             <p className="text-prana-brown/60 max-w-2xl mx-auto font-sans">
               Donde la tecnología avanzada se encuentra con un entorno de desconexión absoluta.
             </p>
@@ -165,9 +165,9 @@ export default function Home() {
       </section>
 
       {/* Our Story (Nosotros) Section */}
-      <section id="nosotros" className="relative z-10 py-32 px-8 max-w-7xl mx-auto">
-        <div className="flex flex-col md:flex-row items-center gap-16">
-          <div className="flex-1 relative aspect-square md:aspect-[4/5] rounded-[3rem] overflow-hidden shadow-2xl">
+      <section id="nosotros" className="relative z-10 py-20 md:py-32 px-6 md:px-8 max-w-7xl mx-auto">
+        <div className="flex flex-col md:flex-row items-center gap-12 md:gap-16">
+          <div className="flex-1 relative aspect-square md:aspect-[4/5] rounded-[3rem] overflow-hidden shadow-2xl w-full">
             <Image
               src="/about-us.jpg"
               alt="PRANA Sanctuary"
@@ -176,9 +176,9 @@ export default function Home() {
             />
             <div className="absolute inset-0 bg-prana-brown/10 mix-blend-overlay" />
           </div>
-          <div className="flex-1 space-y-8">
+          <div className="flex-1 space-y-6 md:space-y-8 w-full">
             <span className="text-xs font-sans uppercase tracking-[0.3em] text-prana-gold font-bold">Nuestra Esencia</span>
-            <h2 className="text-4xl md:text-6xl font-serif text-prana-brown leading-tight">
+            <h2 className="text-3xl md:text-6xl font-serif text-prana-brown leading-[1.1]">
               Creemos que la belleza es un <span className="italic">estado de ser</span>.
             </h2>
             <p className="text-lg text-prana-brown/70 font-sans leading-relaxed">
@@ -200,9 +200,9 @@ export default function Home() {
       </section>
 
       {/* Testimonials Section */}
-      <section className="relative z-10 py-32 px-8 max-w-5xl mx-auto">
-        <div className="text-center mb-20">
-          <h2 className="text-4xl md:text-5xl font-serif text-prana-brown mb-6">Lo que nuestras clientas sienten</h2>
+      <section className="relative z-10 py-20 md:py-32 px-6 md:px-8 max-w-5xl mx-auto">
+        <div className="text-center mb-16 md:mb-20">
+          <h2 className="text-3xl md:text-5xl font-serif text-prana-brown mb-6">Lo que nuestras clientas sienten</h2>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-16">
           {[
@@ -221,9 +221,9 @@ export default function Home() {
       </section>
 
       {/* Final CTA Section */}
-      <section className="relative z-10 py-32 px-8 bg-prana-cream">
+      <section className="relative z-10 py-20 md:py-32 px-6 md:px-8 bg-prana-cream">
         <div className="max-w-4xl mx-auto text-center px-4">
-          <h2 className="text-4xl md:text-6xl font-serif text-prana-brown mb-8">¿Lista para regalarte el tiempo que mereces?</h2>
+          <h2 className="text-3xl md:text-6xl font-serif text-prana-brown mb-8">¿Lista para regalarte el tiempo que mereces?</h2>
           <p className="text-lg md:text-xl text-prana-brown/60 mb-12 font-sans leading-relaxed">
             Tu transformación comienza con un primer paso hacia el bienestar. Asegura tu slot en nuestro calendario y permítenos cuidar de cada detalle.
           </p>
@@ -237,13 +237,13 @@ export default function Home() {
       </section>
 
       {/* Contact Section */}
-      <section id="contacto" className="relative z-10 py-32 px-8 bg-white/50 backdrop-blur-md border-t border-prana-brown/5">
+      <section id="contacto" className="relative z-10 py-20 md:py-32 px-6 md:px-8 bg-white/50 backdrop-blur-md border-t border-prana-brown/5">
         <div className="max-w-7xl mx-auto">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-start">
-            <div className="space-y-12">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 md:gap-20 items-start">
+            <div className="space-y-10 md:space-y-12 w-full">
               <div>
                 <span className="text-xs font-sans uppercase tracking-[0.3em] text-prana-gold font-bold mb-4 block">Ubicación</span>
-                <h2 className="text-4xl md:text-5xl font-serif text-prana-brown mb-6">Encuentra tu centro PRANA</h2>
+                <h2 className="text-3xl md:text-5xl font-serif text-prana-brown mb-6">Encuentra tu centro PRANA</h2>
                 <p className="text-prana-brown/60 font-sans text-lg">
                   Visítanos en un entorno diseñado para tu tranquilidad. Estamos en el corazón de la ciudad, listos para recibirte.
                 </p>
