@@ -89,8 +89,12 @@ export async function GET(request: Request) {
         }
 
         return NextResponse.json({ slots: availableSlots });
-    } catch (error) {
+    } catch (error: any) {
         console.error("Availability Error:", error);
-        return NextResponse.json({ error: "Error calculating availability" }, { status: 500 });
+        return NextResponse.json({
+            error: "Error calculating availability",
+            details: error?.message || String(error),
+            stack: error?.stack
+        }, { status: 500 });
     }
 }
