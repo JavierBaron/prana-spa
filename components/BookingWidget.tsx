@@ -67,9 +67,12 @@ export default function BookingWidget() {
             const data = await response.json();
             if (data.success) {
                 setStep(4);
+            } else {
+                alert("Error al agendar cita: " + (data.details || data.message || "Desconocido"));
             }
-        } catch (error) {
+        } catch (error: any) {
             console.error("Error creating booking:", error);
+            alert("Excepción al agendar: " + (error?.message || "Error desconocido"));
         } finally {
             setIsLoading(false);
         }

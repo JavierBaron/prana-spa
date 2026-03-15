@@ -48,11 +48,13 @@ export async function POST(request: Request) {
         });
 
         return NextResponse.json({ success: true, mode: "real" });
-    } catch (error) {
+    } catch (error: any) {
         console.error("Booking Error:", error);
         return NextResponse.json({
             success: false,
-            message: "Error al crear la cita en Google Calendar"
+            message: "Error al crear la cita en Google Calendar",
+            details: error?.message || String(error),
+            stack: error?.stack
         }, { status: 500 });
     }
 }
