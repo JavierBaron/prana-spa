@@ -1,0 +1,76 @@
+@import "tailwindcss";
+
+:root {
+  /* Base Colors (Minimalismo Elegante) */
+  --background: #F5F1EA;
+  --foreground: #7A6041;
+  --prana-brown: #7A6041;
+  --prana-cream: #F5F1EA;
+  --prana-gold: #D4B08C;
+
+  /* WOW Accents (Ácidos & Pasteles) */
+  --acid-green: #D9FF00;
+  --pastel-lavender: #E6E6FA;
+  --electric-cyan: #00FA9A;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-prana-brown: var(--prana-brown);
+  --color-prana-cream: var(--prana-cream);
+  --color-prana-gold: var(--prana-gold);
+  --color-acid-green: var(--acid-green);
+  --color-pastel-lavender: var(--pastel-lavender);
+  --color-electric-cyan: var(--electric-cyan);
+
+  --font-serif: var(--font-playfair);
+  --font-sans: var(--font-outfit);
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-outfit), ui-sans-serif, system-ui, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-playfair), ui-serif, Georgia, serif;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in {
+  animation: fadeIn 1s ease-out forwards;
+}
+
+@keyframes spinSlow {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-spin-slow {
+  animation: spinSlow 20s linear infinite;
+}
