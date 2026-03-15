@@ -18,10 +18,10 @@ export async function GET(request: Request) {
     ];
 
     try {
-        // Añadir explicitamente offset -05:00 (Bogota/Colombia GMT-5) para evitar el drift horario del server (UTC)
-        const day = new Date(`${dateStr}T00:00:00-05:00`);
-        const timeMin = setHours(day, 8).toISOString();
-        const timeMax = setHours(day, 17).toISOString();
+        // Trabajar con strings ISO directos conservando el offset -05:00 para evitar desajustes horarios
+        const timeMin = `${dateStr}T08:00:00-05:00`;
+        const timeMax = `${dateStr}T17:00:00-05:00`;
+        const day = new Date(); // Usado solo para validación contra 'ahora'
 
         let busy: any[] = [];
 
@@ -42,37 +42,41 @@ export async function GET(request: Request) {
         const availableSlots = [];
 
         for (const shift of SHIFTS) {
-            let currentTime = setMinutes(setHours(day, shift.start), 0);
-            const shiftEnd = setMinutes(setHours(day, shift.end), 0);
+            let currentMin = shift.start * 60; // en minutos fijos
+            const endMin = shift.end * 60;
 
-            while (isBefore(currentTime, shiftEnd)) {
-                const slotStart = currentTime;
-                const slotEnd = addMinutes(currentTime, duration);
+            while (currentMin < endMin) {
+                const hours = Math.floor(currentMin / 60).toString().padStart(2, '0');
+                const mins = (currentMin % 60).toString().padStart(2, '0');
 
-                // Verificar si el slot entra en el turno
-                if (isBefore(shiftEnd, slotEnd)) break;
+                // Construir los Date() fijos con el offset explicito para comparación estricta de traslapos
+                const slotStart = new Date(`${dateStr}T${hours}:${mins}:00-05:00`);
+                const slotEnd = new Date(slotStart.getTime() + duration * 60 * 1000);
 
-                // Verificar si el slot es en el pasado (para el día de hoy)
+                // Verificar si el slot entra en el turno y no excede las 5 PM (17h -> 1020 min)
+                if ((currentMin + duration) > endMin) {
+                    break;
+                }
+
+                // Verificar si el slot es en el pasado
                 const now = new Date();
                 if (isBefore(slotStart, now)) {
-                    currentTime = addMinutes(currentTime, 30);
+                    currentMin += 30;
                     continue;
                 }
 
-                // Verificar si el slot traslapa con algún busy
+                // Verificar si el slot traslapa con algún busy de Google Calendar
                 const isOverlap = busy.some((b) => {
                     const bStart = new Date(b.start!);
                     const bEnd = new Date(b.end!);
-                    // Traslapo: slot inicia antes que bEnd Y slot termina después de bStart
                     return isBefore(slotStart, bEnd) && isBefore(bStart, slotEnd);
                 });
 
                 if (!isOverlap) {
-                    availableSlots.push(format(slotStart, "HH:mm"));
+                    availableSlots.push(`${hours}:${mins}`);
                 }
 
-                // Avanzar en incrementos de 30 minutos para dar más flexibilidad
-                currentTime = addMinutes(currentTime, 30);
+                currentMin += 30;
             }
         }
 
