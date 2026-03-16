@@ -103,32 +103,29 @@ export default function Home() {
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
           {[
-            { title: "Corporal & Relax", img: "/service-2.jpg", tag: "Holistic", desc: "El refugio que tu cuerpo necesita. Terapias manuales para liberar tensiones." },
-            { title: "Estética Avanzada", img: "/service-3.jpg", tag: "Tech", desc: "Innovación sin cirugía. Microneedling de última generación para resultados reales." },
-            { title: "Cejas y Pestañas", img: "/service-4.jpg", tag: "Art", desc: "El marco de tu expresión. Diseño artesanal que potencia tu mirada con elegancia." },
+            { img: "/service-2.jpg", alt: "Servicios PRANA 1" },
+            { img: "/service-3.jpg", alt: "Servicios PRANA 2" },
+            { img: "/service-4.jpg", alt: "Servicios PRANA 3" },
           ].map((service, i) => (
-            <div key={i} className="group relative aspect-[4/5] overflow-hidden rounded-[3rem] bg-prana-brown/5 border border-prana-brown/10 hover:border-acid-green/30 transition-all duration-700 shadow-xl hover:shadow-2xl">
-              <Image
-                src={service.img}
-                alt={service.title}
-                fill
-                className="object-cover transition-transform duration-1000 group-hover:scale-110"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-prana-brown/90 via-prana-brown/20 to-transparent opacity-60 group-hover:opacity-80 transition-opacity duration-500" />
-
-              <div className="absolute inset-0 p-10 flex flex-col justify-end transform transition-transform duration-500">
-                <span className="text-[10px] uppercase tracking-[0.4em] text-acid-green mb-3 font-bold">{service.tag}</span>
-                <h3 className="text-3xl font-serif text-white mb-3 leading-tight">{service.title}</h3>
-                <p className="text-white/70 text-sm font-sans mb-6 opacity-0 group-hover:opacity-100 transition-all duration-500 max-h-0 group-hover:max-h-40 overflow-hidden leading-relaxed">
-                  {service.desc}
-                </p>
-                <button
-                  onClick={() => setIsBookingOpen(true)}
-                  className="w-fit text-xs uppercase tracking-widest text-white border-b border-white/30 pb-1 hover:border-acid-green hover:text-acid-green transition-all duration-300"
-                >
-                  Agendar ahora
-                </button>
+            <div key={i} className="flex flex-col items-center gap-6 group">
+              <div 
+                className="relative w-full overflow-hidden rounded-[3rem] border border-prana-brown/10 hover:border-acid-green/50 transition-all duration-700 shadow-xl hover:shadow-2xl cursor-pointer bg-white/50"
+                onClick={() => setIsBookingOpen(true)}
+              >
+                <Image
+                  src={service.img}
+                  alt={service.alt}
+                  width={800}
+                  height={1200}
+                  className="w-full h-auto object-cover transition-transform duration-1000 group-hover:scale-105"
+                />
               </div>
+              <button
+                onClick={() => setIsBookingOpen(true)}
+                className="bg-prana-brown text-prana-cream px-10 py-4 rounded-full font-sans font-bold uppercase tracking-widest text-xs hover:bg-prana-gold transition-all duration-300 shadow-lg hover:shadow-xl hover:-translate-y-1"
+              >
+                Agendar ahora
+              </button>
             </div>
           ))}
         </div>
